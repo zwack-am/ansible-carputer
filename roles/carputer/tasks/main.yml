@@ -4,9 +4,16 @@
 
 # Installs Customized DWM
 
-# Installs Navit
+- name: Install Navit
+  package:
+    name="navit"
+    status="installed"
 
-# Installs Mopidy
+- name: Install Mopidy (MPD server)
+  package:
+    name="mopidy"
+    status="installed"
+
 
 # Installs MPD Client
 
