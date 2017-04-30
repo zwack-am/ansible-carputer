@@ -1,6 +1,21 @@
 ---
 
-# Installs Tzatziffy drivers
+- name: Install Tzatziffy drivers
+  git:
+    repo: "https://github.com/KoljaWindeler/CHIP_TZATZIFFY.git"
+    dest: /opt/
+
+- name: Install the overlay
+  command: /opt/CHIP_TZATZIFFY/overlay/chip/install.sh
+    creates: /lib/firmware/nextthingco/chip/dip-2a-2.dtbo
+
+- name: Copy the updated xorg.conf into place
+  copy:
+    src: /opt/CHIP_TZATZIFFY/scripts/xorg.conf
+    dest: /etc/X11
+    remote_src: true
+    backup: yes
+    
 
 # Installs Customized DWM
 
