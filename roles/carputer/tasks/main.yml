@@ -16,8 +16,16 @@
     remote_src: true
     backup: yes
     
+- name: Install a Customized DWM
+  copy:
+    src: dwm
+    dest: /usr/local/bin
 
-# Installs Customized DWM
+- name: Add the DWM autostart file
+  copy:
+    src: autostart.sh
+    dest: /home/chip/.dwm/autostart.sh
+
 
 - name: Install Navit
   package:
@@ -29,8 +37,15 @@
     name="mopidy"
     status="installed"
 
+- name: Install Glurp (MPD client)
+  package:
+    name="glurp"
+    status="installed"
 
-# Installs MPD Client
+- name: Install stterm (a terminal)
+  package:
+    name="stterm"
+    status="installed"
 
 # Installs OBDII software
 
