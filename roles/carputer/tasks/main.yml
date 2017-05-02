@@ -5,7 +5,7 @@
     name: xorg
     state: installed
 
-- name: [nstall the Mali driver
+- name: Install the Mali driver
   package:
     name: chip-mali-userspace
     state: installed
