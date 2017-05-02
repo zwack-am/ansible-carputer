@@ -1,12 +1,39 @@
 ---
 
+- name: Install XWindows
+  package:
+    name: xorg
+    state: installed
+
+- name: [nstall the Mali driver
+  package:
+    name: chip-mali-userspace
+    state: installed
+
+- name: Install NoDM
+  package:
+    name: nodm
+    state: installed
+
+- name: Configure NoDM
+  copy:
+    src: nodm.conf
+    dest: /etc
+    mode: 0644
+
+- name: Install git
+  package:
+    name: git
+    state: installed
+
 - name: Install Tzatziffy drivers
   git:
     repo: "https://github.com/KoljaWindeler/CHIP_TZATZIFFY.git"
-    dest: /opt/
+    dest: /opt/CHIP_TZATZIFFY
 
 - name: Install the overlay
-  command: /opt/CHIP_TZATZIFFY/overlay/chip/install.sh
+  shell: /opt/CHIP_TZATZIFFY/overlay/chip/install.sh
+  args:
     creates: /lib/firmware/nextthingco/chip/dip-2a-2.dtbo
 
 - name: Copy the updated xorg.conf into place
@@ -20,32 +47,56 @@
   copy:
     src: dwm
     dest: /usr/local/bin
+    mode: 0755
+
+- name: Create a /home/chip/.dwm directory
+  file:
+    dest: /home/chip/.dwm
+    state: directory
+    mode: 0700
+    owner: chip
+    group: chip
 
 - name: Add the DWM autostart file
   copy:
     src: autostart.sh
     dest: /home/chip/.dwm/autostart.sh
+    mode: 0500
+    owner: chip
+    group: chip
 
+- name: Install the sudoers rule
+  copy:
+    src: carputer
+    dest: /etc/sudoers.conf.d
+    mode: 0440
+    owner: root
+    group: root
+
+- name: Install FLite Speech synthesis
+  package: 
+    name="flite"
+    state="installed"
 
 - name: Install Navit
   package:
     name="navit"
-    status="installed"
+    state="installed"
 
 - name: Install Mopidy (MPD server)
   package:
     name="mopidy"
-    status="installed"
+    state="installed"
 
 - name: Install Glurp (MPD client)
   package:
     name="glurp"
-    status="installed"
+    state="installed"
 
 - name: Install stterm (a terminal)
   package:
     name="stterm"
-    status="installed"
+    state="installed"
 
 # Installs OBDII software
 
