@@ -72,6 +72,11 @@
     group: chip
   notify: Enable NoDM
 
+- name: Install xinput_calibrator
+  package:
+    name: xinput-calibrator
+    state: installed
+
 - name: Install the sudoers rule
   copy:
     src: carputer
