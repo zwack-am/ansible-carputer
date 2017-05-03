@@ -75,13 +75,25 @@
 
 - name: Install FLite Speech synthesis
   package: 
-    name="flite"
-    state="installed"
+    name: "flite"
+    state: "installed"
+
+- name: Install GPSd
+  package:
+    name: "gpsd"
+    state: "installed"
+
+- name: Configure GPSd to use /dev/ttyUSB0
+  lineinfile:
+    path: /etc/default/gpsd
+    regexp: "DEVICES="
+    line: "DEVICES=\"/dev/ttyUSB0\""
+    state: present
 
 - name: Install Navit
   package:
-    name="navit"
-    state="installed"
+    name: "navit"
+    state: "installed"
 
 - name: Create a /home/chip/.navit directory
   file:
@@ -101,18 +113,18 @@
 
 - name: Install Mopidy (MPD server)
   package:
-    name="mopidy"
-    state="installed"
+    name: "mopidy"
+    state: "installed"
 
 - name: Install Glurp (MPD client)
   package:
-    name="glurp"
-    state="installed"
+    name: "glurp"
+    state: "installed"
 
 - name: Install stterm (a terminal)
   package:
-    name="stterm"
-    state="installed"
+    name: "stterm"
+    state: "installed"
 
 # Installs OBDII software
 
