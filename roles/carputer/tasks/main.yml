@@ -161,4 +161,14 @@
 
 # Installs OBDII software
 
-# Install Bluetooth management software if needed (for keyboard and OBDII)
+- name: Install the Bluetooth software
+  package:
+    name: {{ item }}
+    state: installed
+  notify: Enable Bluetooth
+  with_items:
+    - rtl8723bs-bt
+    - bluez
+    - bluez-obexd
+    - libbluetooth3
+    - blueman
