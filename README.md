@@ -1,6 +1,6 @@
 # Ansible-Carputer
 
-An Ansible playbook to configure a CHIP with a Tzatziffy and a USB GPS dongle as a carputer.  Start with a headless DIP.  Configure networking on it then run this Ansible Role against it.
+An Ansible playbook to configure a CHIP with a Tzatziffy and a USB GPS dongle as a carputer.  Start with a headless CHIP.  Configure networking on it, install Python, then run this Ansible Role against it.
 
 * Installs Tzatziffy drivers
 
@@ -8,11 +8,13 @@ An Ansible playbook to configure a CHIP with a Tzatziffy and a USB GPS dongle as
 
 * Installs Navit
 
-* Installs Mopidy
+* Installs Mopidy Music Playing Daemon (MPD)
 
-* Installs MPD Client
+* Installs Glurp MPD Client
 
 * Installs OBDII software
+
+* Installs STTERM Terminal
 
 * Install Bluetooth management software if needed (for keyboard and OBDII)
 
