@@ -68,7 +68,7 @@
 - name: Install the sudoers rule
   copy:
     src: carputer
-    dest: /etc/sudoers.conf.d
+    dest: /etc/sudoers.d
     mode: 0440
     owner: root
     group: root
