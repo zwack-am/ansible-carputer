@@ -83,6 +83,22 @@
     name="navit"
     state="installed"
 
+- name: Create a /home/chip/.navit directory
+  file:
+    dest: /home/chip/.navit
+    state: directory
+    mode: 0755
+    owner: chip
+    group: chip
+
+- name: Add the navit.xml file
+  copy:
+    src: navit.xml
+    dest: /home/chip/.navit/navit.xml
+    mode: 0644
+    owner: chip
+    group: chip
+
 - name: Install Mopidy (MPD server)
   package:
     name="mopidy"
