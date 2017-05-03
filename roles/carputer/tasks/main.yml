@@ -14,12 +14,15 @@
   package:
     name: nodm
     state: installed
+  notify: Enable NoDM
 
 - name: Configure NoDM
   copy:
     src: nodm.conf
     dest: /etc
     mode: 0644
+  notify: Enable NoDM
+
 
 - name: Install git
   package:
@@ -42,12 +45,14 @@
     dest: /etc/X11
     remote_src: true
     backup: yes
+  notify: Enable NoDM
     
 - name: Install a Customized DWM
   copy:
     src: dwm
     dest: /usr/local/bin
     mode: 0755
+  notify: Enable NoDM
 
 - name: Create a /home/chip/.dwm directory
   file:
@@ -56,6 +61,7 @@
     mode: 0700
     owner: chip
     group: chip
+  notify: Enable NoDM
 
 - name: Add the DWM autostart file
   copy:
@@ -64,6 +70,7 @@
     mode: 0500
     owner: chip
     group: chip
+  notify: Enable NoDM
 
 - name: Install the sudoers rule
   copy:
@@ -82,6 +89,7 @@
   package:
     name: "gpsd"
     state: "installed"
+  notify: Enable GPSd
 
 - name: Configure GPSd to use /dev/ttyUSB0
   lineinfile:
@@ -89,6 +97,7 @@
     regexp: "DEVICES="
     line: "DEVICES=\"/dev/ttyUSB0\""
     state: present
+  notify: Enable GPSd
 
 - name: Install Navit
   package:
@@ -115,11 +124,35 @@
   package:
     name: "mopidy"
     state: "installed"
+  notify: Enable Mopidy
+
+- name: Configure Mopidy
+  copy:
+    src: mopidy.conf
+    dest: /etc/mopidy/mopidy.conf
+    mode: 0640
+    user: mopidy
+    group: root
+  notify: Enable Mopidy
+
+- name: Scan the Music directory
+  command: /usr/sbin/mopidyctl local scan
+  args:
+    creates: /files/Data/library.json.gz
+  notify: Enable Mopidy
 
 - name: Install Glurp (MPD client)
   package:
     name: "glurp"
     state: "installed"
+
+- name: Configure Glurp
+  copy:
+    src: glurp
+    dest: /home/chip/.glurp
+    user: chip
+    group: chip
+    mode: 0644
 
 - name: Install stterm (a terminal)
   package:
@@ -129,5 +162,3 @@
 # Installs OBDII software
 
 # Install Bluetooth management software if needed (for keyboard and OBDII)
-
-

@@ -1,0 +1,7 @@
+server = localhost
+port = 6600
+refresh-rate = 500.000000
+window-x = 0
+window-y = 32
+width = 800
+height = 448

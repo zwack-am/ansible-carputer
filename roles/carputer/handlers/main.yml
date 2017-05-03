@@ -1,0 +1,20 @@
+---
+
+- name: Enable NoDM
+  service:
+    name: nodm
+    state: started
+    enabled: true
+
+- name: Enable GPSd
+  service:
+    name: gpsd
+    state: started
+    enabled: true
+
+- name: Enable Mopidy
+  service:
+    name: mopidy
+    state: started
+    enabled: true
+
