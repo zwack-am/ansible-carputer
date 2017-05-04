@@ -18,11 +18,17 @@
 
 - name: Configure NoDM
   copy:
+    src: nodm
+    dest: /etc/default/nodm
+    mode: 0644
+  notify: Enable NoDM
+
+- name: Configure NoDM.conf
+  copy:
     src: nodm.conf
     dest: /etc
     mode: 0644
   notify: Enable NoDM
-
 
 - name: Install git
   package:
@@ -85,6 +91,9 @@
     owner: root
     group: root
 
+- name: Set the default target
+  command: /bin/systemctl set-default graphical.target
+
 - name: Install FLite Speech synthesis
   package: 
     name: "flite"
@@ -136,7 +145,7 @@
     src: mopidy.conf
     dest: /etc/mopidy/mopidy.conf
     mode: 0640
-    user: mopidy
+    owner: mopidy
     group: root
   notify: Enable Mopidy
 
@@ -155,7 +164,7 @@
   copy:
     src: glurp
     dest: /home/chip/.glurp
-    user: chip
+    owner: chip
     group: chip
     mode: 0644
 
@@ -168,7 +177,7 @@
 
 - name: Install the Bluetooth software
   package:
-    name: {{ item }}
+    name: "{{ item }}"
     state: installed
   notify: Enable Bluetooth
   with_items:
