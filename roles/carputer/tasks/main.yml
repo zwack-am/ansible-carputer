@@ -1,5 +1,10 @@
 ---
 
+- name: Install locales
+  package: 
+    name: locales
+    state: installed
+
 - name: Install XWindows
   package:
     name: xorg
