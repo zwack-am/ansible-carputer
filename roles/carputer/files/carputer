@@ -1,1 +1,1 @@
-chip	ALL = NOPASSWD: /sbin/shutdown -h now, /usr/local/bin/maxbright.sh
+chip	ALL = NOPASSWD: /sbin/shutdown -h now, /usr/local/bin/maxbrightness.sh
