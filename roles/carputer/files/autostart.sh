@@ -1,12 +1,15 @@
 #! /bin/sh
 
 cd ..
-xrandr --output Composite-0 --off
-xrandr --output None-0 --mode 800x480
+/usr/bin/xrandr --output Composite-0 --off
+/usr/bin/xrandr --output None-0 --mode 800x480
+/usr/bin/xset s off
+/usr/bin/xset -dpms
+/usr/bin/xset s noblank
 
-navit &
-glurp &
+/usr/bin/navit &
+/usr/bin/glurp &
 #obd &
-blueman-manager &
-stterm &
+/usr/bin/blueman-manager &
+/usr/bin/stterm &
 
