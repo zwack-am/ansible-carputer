@@ -6,6 +6,7 @@ cd ..
 /usr/bin/xset s off
 /usr/bin/xset -dpms
 /usr/bin/xset s noblank
+/usr/bin/sudo /usr/local/bin/maxbrightness.sh
 
 /usr/bin/navit &
 /usr/bin/glurp &

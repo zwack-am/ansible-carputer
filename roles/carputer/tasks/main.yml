@@ -78,6 +78,14 @@
     group: chip
   notify: Enable NoDM
 
+- name: Add the MaxBrightness script
+  copy:
+    src: maxbrightness.sh
+    dest: /usr/local/bin/maxbrightness.sh
+    mode: 0755
+    owner: root
+    group: root
+
 - name: Install xinput_calibrator
   package:
     name: xinput-calibrator
