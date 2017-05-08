@@ -41,7 +41,7 @@
     dest: /opt/CHIP_TZATZIFFY
 
 - name: Install the overlay
-  shell: /opt/CHIP_TZATZIFFY/overlay/chip/install.sh
+  command: /opt/CHIP_TZATZIFFY/overlay/chip/install.sh
   args:
     creates: /lib/firmware/nextthingco/chip/dip-2a-2.dtbo
 
