@@ -1,5 +1,11 @@
 ---
 
 - hosts: carputers
+  gather_facts: no
+  tasks:
+    - name: Install python
+      raw: apt-get install -y python
+
+- hosts: carputers
   roles: 
     - carputer
